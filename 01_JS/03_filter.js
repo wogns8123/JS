@@ -10,7 +10,7 @@ const products = [
 //     return product.type === 'fruit'
 // }
 // const newArr = products.filter(fruitFilter)
-// console.log(newArr)
+// console.log(newArr)  
 
 // // 2.
 // const newArr = products.filter(function (product) {
