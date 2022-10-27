@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button>야옹아 이리온</button>
+  <button id="dog">강아지</button>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script>
+    console.log('고양이는 야옹')
+    const catImageSearchURL = 'https://api.thecatapi.com/v1/images/search'
+    const btn = document.querySelector('button')
+    const btn_dog = document.querySelector('#dog')
+    const dogImageSearchURL = 'https://dog.ceo/api/breeds/image/random'
+    btn_dog.addEventListener('click', function () {
+      axios({
+        method: 'get',
+        url: dogImageSearchURL
+      })
+        .then((response) => {
+          dogImg = document.createElement('img')
+          console.log(response)
+          dogImg.setAttribute('src',response.data.message)
+          document.body.appendChild(dogImg)
+        })
+        .catch((response)=>{
+          console.log('실패')
+        })
+        console.log('댕댕')
+    })
+    
+
+    btn.addEventListener('click', function () {
+      axios.get(catImageSearchURL)
+        .then((response) => {
+          imgElem = document.createElement('img')
+          imgElem.setAttribute('src', response.data[0].url)
+          document.body.appendChild(imgElem)
+          // console.log(response.data)
+        })
+        .catch((error) => { 
+          console.log('실패했다옹')
+        })
+        console.log('야옹야옹') 
+    })
+  </script>
+</body>
+</html>
